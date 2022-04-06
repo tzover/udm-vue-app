@@ -23,8 +23,14 @@
       </div>
 
       <hr />
-      <button v-if="showDetails" @click="changeStatus">Hide Status</button>
-      <button v-if="!showDetails" @click="changeStatus">Show Status</button>
+      <!-- <button v-if="showDetails" @click="changeStatus">Hide Status</button> -->
+      <!-- <button v-if="!showDetails" @click="changeStatus">Show Status</button> -->
+      <button type="button" @click="changeStatus">
+        <span v-if="showDetails">Hide Status</span>
+        <span v-else="showDetails">Show Status</span>
+      </button>
+      <!-- v-show は display noneになる -->
+      <p v-show="showDetails">TEST</p>
     </div>
 
     <hr />

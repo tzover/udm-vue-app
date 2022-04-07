@@ -6,6 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      p,
+      h3,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      /* .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      } */
+      li {
+        list-style-type: none;
+        background: #fff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li.fav {
+        background: #ff9ed2;
+        color: white;
+      }
+      .pracImg {
+        width: 30%;
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello, Vue :)</h1>
@@ -31,6 +70,34 @@
       </button>
       <!-- v-show は display noneになる -->
       <p v-show="showDetails">TEST</p>
+      <hr />
+
+      <!-- Mouse events -->
+      <div class="box" @mouseover="handleEvent($event, 5)">
+        Mouse over (enter)
+      </div>
+      <div class="box" @mouseleave="handleEvent">Mouse leave</div>
+      <div class="box" @dblclick="handleEvent">Double click</div>
+      <div class="box" @mousemove="handleMousemove">
+        Mouse move Position - {{ x }} - {{ y }}
+      </div>
+
+      <!-- For -->
+      <hr />
+      <ul>
+        <li v-for="book in books" :class="{ fav: book.isFav}">
+          <!-- img -->
+          <img class="pracImg" v-bind:src="book.img" v-bind:alt="book.data" />
+          <h3>{{book.title}}</h3>
+          <p>{{book.data}}</p>
+        </li>
+      </ul>
+
+      <!-- URL -->
+      <hr />
+      <a :href="url">{{ url }}</a>
+      <br />
+      <a v-bind:href="url">{{ url }}</a>
     </div>
 
     <hr />

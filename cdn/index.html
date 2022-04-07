@@ -18,14 +18,14 @@
         margin: 0;
         padding: 0;
       }
-      /* .box {
+      .box {
         padding: 100px 0;
         width: 400px;
         text-align: center;
         background: #ddd;
         margin: 20px;
         display: inline-block;
-      } */
+      }
       li {
         list-style-type: none;
         background: #fff;
@@ -85,7 +85,11 @@
       <!-- For -->
       <hr />
       <ul>
-        <li v-for="book in books" :class="{ fav: book.isFav}">
+        <li
+          v-for="book in filteredBooks"
+          :class="{ fav: book.isFav}"
+          @click="toggleFav(book)"
+        >
           <!-- img -->
           <img class="pracImg" v-bind:src="book.img" v-bind:alt="book.data" />
           <h3>{{book.title}}</h3>

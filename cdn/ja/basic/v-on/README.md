@@ -5,6 +5,12 @@
 ## 役割
 
 - userEvent
+  - .stop : event の親要素への伝達を中止
+  - .prevent : event 規定の動作をキャンセル
+  - .capture : event handler を capture mode で動作
+  - .self : event 発生元が要素実親の場合にだけ実行
+  - .once : event handler を一回だけ実行
+  - .passive : passive mode を有効化
 
 ## Sample
 

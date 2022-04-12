@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js 3 - event -</title>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <!-- Contents -->
+    <div id="app">
+      <!-- Practices -->
+
+      <!-- inline event handler -->
+      <h2>inline event handler</h2>
+      <p>{{ counter}}</p>
+      <button type="button" @click="counter++">
+        Click1 <span>(inline)</span>
+      </button>
+
+      <br />
+
+      <!-- method event handler -->
+      <h2>method event handler</h2>
+      <button type="button" @click="clickHandler">
+        Click2 <span>(methods)</span>
+      </button>
+
+      <br />
+
+      <!-- event object -->
+      <h2>event object</h2>
+      <button type="button" @click="showEventContents">
+        Show console event object
+      </button>
+
+      <br />
+
+      <!-- event handler with args -->
+      <h2>event handler with args</h2>
+      <button type="button" @click="clickHandlerWithArg('Vue.js')">
+        Click
+      </button>
+      <p>{{ msg }}</p>
+
+      <br />
+
+      <!-- event handler with args and event object -->
+      <h2>event handler with args and event object</h2>
+      <button type="button" @click="clickHandlerWithArg2($event, 'Vue.js')">
+        Click
+      </button>
+      <p>{{ msg2 }}</p>
+
+      <br />
+
+      <!-- call once -->
+      <h2>call once</h2>
+      <button type="button" @click.once="getTime">Get Time?</button>
+      <p>{{ time }}</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

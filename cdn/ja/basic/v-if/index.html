@@ -14,6 +14,20 @@
       <!-- Practices -->
       <p v-if="toggle">Hello</p>
       <button type="button" @click="toggleBtn">Click!</button>
+
+      <!-- v-if and v-else -->
+      <h3>v-if and v-else</h3>
+      <p v-if="toggle2">Yes</p>
+      <p v-else>No</p>
+      <button type="button" @click="toggleBtn2">Click!</button>
+
+      <!-- v-else-if -->
+      <h3>v-else-if</h3>
+      <p v-if="color === 'red'">Stop</p>
+      <p v-else-if="color === 'yellow'">Caution</p>
+      <p v-else-if="color === 'blue'">Go</p>
+      <p v-else>Not red/yellow/blue</p>
+      <button type="button" @click="changeColor">Click!</button>
     </div>
 
     <!-- Scripts -->

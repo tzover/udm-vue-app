@@ -27,6 +27,20 @@
       <!-- Practices -->
       <p v-if="toggle">Hello</p>
       <button type="button" @click="toggleBtn">Click!</button>
+
+      <!-- v-if and v-else -->
+      <h3>v-if and v-else</h3>
+      <p v-if="toggle2">Yes</p>
+      <p v-else>No</p>
+      <button type="button" @click="toggleBtn2">Click!</button>
+
+      <!-- v-else-if -->
+      <h3>v-else-if</h3>
+      <p v-if="color === 'red'">Stop</p>
+      <p v-else-if="color === 'yellow'">Caution</p>
+      <p v-else-if="color === 'blue'">Go</p>
+      <p v-else>Not red/yellow/blue</p>
+      <button type="button" @click="changeColor">Click!</button>
     </div>
 
     <!-- Scripts -->
@@ -43,14 +57,29 @@
     data() {
       return {
         toggle: true,
+
+        // v-if and v-else
+        toggle2: true,
+
+        // v-else-if
+        color: 'red',
+        colors: ['blue', 'yellow', 'red', 'black'],
       }
     },
     methods: {
       toggleBtn() {
         this.toggle = !this.toggle
       },
+      toggleBtn2() {
+        this.toggle2 = !this.toggle2
+      },
+      changeColor() {
+        const num = Math.floor(Math.random() * 4 - 1) + 1
+        this.color = this.colors[num]
+      },
     },
   })
   app.mount('#app')
 }
+
 ```

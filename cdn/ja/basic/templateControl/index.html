@@ -13,7 +13,29 @@
     <div id="app">
       <!-- Practices -->
       <div>
+        <!-- basic -->
+        <p>{{ msgBasic }}</p>
+        <button @click="clickHandlerBasic">Click!</button>
+
         <!-- v-once -->
+        <p v-once>{{ msgOnce }}</p>
+        <button @click="clickHandlerOnce">Click!</button>
+
+        <!-- v-pre -->
+        <p>{{ msgPre }}</p>
+        <p v-pre>{{ msgPre }}</p>
+
+        <!-- v-html -->
+        <p>{{ msgHtml }}</p>
+        <p v-html="msgHtml"></p>
+
+        <!-- v-cloak -->
+        <p>{{ msgCloak }}</p>
+        <p v-cloak>{{ msgCloak }}</p>
+
+        <!-- v-text -->
+        <p>{{ msgText }}</p>
+        <p v-text="msgText"></p>
       </div>
     </div>
 

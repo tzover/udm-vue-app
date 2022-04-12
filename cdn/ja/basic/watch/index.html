@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js 3 - watch -</title>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <!-- Contents -->
+    <div id="app">
+      <!-- Practices -->
+      <p>{{ msg }}</p>
+      <input type="text" v-model="msg" />
+
+      <!-- distance changer -->
+      <h3>distance changer</h3>
+      <p>
+        <input type="number" v-model="km" />
+        km
+      </p>
+      <p>
+        <input type="number" v-model="m" />
+        m
+      </p>
+
+      <!-- compare computed vs watch -->
+      <h3>compare computed vs watch</h3>
+      <input type="text" v-model="firstName" />
+      <br />
+      <input type="text" v-model="lastName" />
+      <p>FullName : {{ fullName }}</p>
+
+      <!-- deep -->
+      <h3>deep (nest)</h3>
+      <ul>
+        <li v-for="color in colors">{{ color.name }}</li>
+      </ul>
+
+      <p>Color Changer</p>
+      <select v-model="id">
+        <option value="0" disabled>Please select number</option>
+        <option v-for="color in colors" :value="color.id - 1">
+          {{ color.id }}
+        </option>
+      </select>
+      <input type="text" placeholder="Color" v-model.lazy="color" />
+
+      <button type="button" @click="changeColor(id, color)">Push</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

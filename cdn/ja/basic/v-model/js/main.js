@@ -2,7 +2,12 @@
 {
   const app = Vue.createApp({
     data() {
-      return {}
+      return {
+        msgBasic: '',
+        msgLazy: '',
+        msgTrim: '',
+        age: 0,
+      }
     },
     methods: {},
     computed: {},

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js 3 - transition -</title>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <!-- Contents -->
+    <div id="app">
+      <!-- Practices -->
+      <button @click="show = !show">Change</button>
+      <transition name="fade">
+        <p v-show="show">Hello. This is a transition sample</p>
+      </transition>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

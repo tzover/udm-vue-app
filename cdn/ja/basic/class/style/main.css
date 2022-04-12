@@ -1,0 +1,15 @@
+.large {
+  font-size: 3rem;
+}
+
+.text-danger {
+  color: red;
+}
+
+.bg-gray {
+  background: gray;
+}
+
+.text-blue {
+  color: blue;
+}

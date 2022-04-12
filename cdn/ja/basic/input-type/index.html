@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js 3 - input type -</title>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <!-- Contents -->
+    <div id="app">
+      <!-- Practices -->
+
+      <!-- textarea -->
+      <h2>textarea</h2>
+      <p>{{ msg }}</p>
+      <!-- <textarea>{{ msg }}</textarea> -->
+      <textarea v-model="msg"></textarea>
+
+      <br />
+
+      <!-- checkbox -->
+      <h2>checkbox</h2>
+      <label for="checkbox">{{ checked }}</label>
+      <input type="checkbox" id="checkbox" v-model="checked" />
+
+      <br />
+
+      <!-- checkboxes -->
+      <h2>checkboxes</h2>
+      <label for="red">Red</label>
+      <input type="checkbox" id="red" value="Red" v-model="colors" />
+      <label for="green">Green</label>
+      <input type="checkbox" id="green" value="Green" v-model="colors" />
+      <label for="blue">Blue</label>
+      <input type="checkbox" id="blue" value="Blue" v-model="colors" />
+      <p>{{ colors }}</p>
+
+      <!-- checkboxes -->
+      <h2>checkboxes</h2>
+      <input type="radio" id="red2" value="Red" v-model="color" />
+      <label for="red2">Red</label>
+      <input type="radio" id="green2" value="Green" v-model="color" />
+      <label for="green2">Green</label>
+      <input type="radio" id="blue2" value="Blue" v-model="color" />
+      <label for="blue2">Blue</label>
+      <p>{{ color }}</p>
+
+      <!-- selectbox -->
+      <h2>selectbox</h2>
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Yellow</option>
+      </select>
+      <p>{{ selected }}</p>
+
+      <!-- selectboxes -->
+      <h2>selectbox</h2>
+      <select v-model="selected2" multiple>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Yellow</option>
+      </select>
+      <p>{{ selected2 }}</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

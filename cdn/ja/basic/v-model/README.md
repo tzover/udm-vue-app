@@ -10,6 +10,8 @@
 | .trim   | 入力値から前後の空白を削除してから代入 |
 | .number | 入力値を数値型に型変換してから代入     |
 
+> v-model 使用時は`value`, `checked`, `selected`のような属性は無視される
+
 ## Sample
 
 - index.html

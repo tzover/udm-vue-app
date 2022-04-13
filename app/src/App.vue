@@ -3,7 +3,7 @@
   <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
+  <teleport to="#modals" v-if="showModal">
     <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
     <Modal theme="" @close="toggleModal">
       <template v-slot:links>
@@ -13,15 +13,15 @@
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
     </Modal>
-  </div>
+  </teleport>
 
-  <div v-if="showModalTwo">
+  <teleport to="#modals" v-if="showModalTwo">
     <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
     <Modal @close="toggleModalTwo">
       <h1>Sign up to the newsletter</h1>
       <p>For updates and promo codes!</p>
     </Modal>
-  </div>
+  </teleport>
 
   <button type="button" @click.self="toggleModal">open modal (alt)</button>
   <button type="button" @click.self="toggleModalTwo">open modal</button>
@@ -69,7 +69,8 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+#modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -2,7 +2,31 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <h1>{{ title }}</h1>
-  <Modal />
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
+    <Modal theme="" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info...</a>
+      </template>
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
+    </Modal>
+  </div>
+
+  <div v-if="showModalTwo">
+    <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
+    <Modal @close="toggleModalTwo">
+      <h1>Sign up to the newsletter</h1>
+      <p>For updates and promo codes!</p>
+    </Modal>
+  </div>
+
+  <button type="button" @click.self="toggleModal">open modal (alt)</button>
+  <button type="button" @click.self="toggleModalTwo">open modal</button>
+
+  <!-- ref practice -->
   <br />
   <input type="text" ref="name" />
   <button type="button" @click="handleClick">Click</button>
@@ -17,13 +41,24 @@ export default {
   data() {
     return {
       title: 'My First Vue App :)',
+      header: 'Sign up for the Giveaway!',
+      text: 'Grab your ninja swag for half price!',
+      showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
     handleClick() {
       console.log(this.$refs.name)
+      console.log(this.$refs)
       this.$refs.name.classList.add('active')
       this.$refs.name.focus()
+    },
+    toggleModal() {
+      this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     },
   },
   components: {

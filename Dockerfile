@@ -31,6 +31,6 @@ USER ${USER_NAME}
 # Setup node container
 RUN yarn global add @vue/cli@5.0.4
 COPY ./app/ /home/${USER_NAME}/app/
-# RUN yarn install
+RUN yarn install
 
 # CMD [ "npx", "serve", "-s", "-n", "build" ]

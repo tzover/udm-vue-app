@@ -3,6 +3,7 @@ FROM node:16.13.0-slim
 # Set environments and arguments
 ENV USER_NAME=node
 ENV USER_UID=1000
+ENV PATH=/home/node/.yarn/bin:$PATH
 ARG wkdir=/home/${USER_NAME}/app
 
 # Install apt packages
@@ -28,7 +29,8 @@ RUN echo "root:root" | chpasswd \
 USER ${USER_NAME}
 
 # Setup node container
+RUN yarn global add @vue/cli@5.0.4
 COPY ./app/ /home/${USER_NAME}/app/
-RUN yarn install
+# RUN yarn install
 
 # CMD [ "npx", "serve", "-s", "-n", "build" ]

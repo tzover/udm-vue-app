@@ -15,6 +15,8 @@ RUN apt update && apt install -y \
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
+WORKDIR ${wkdir}
+
 # Switch user
 RUN echo "root:root" | chpasswd \
     && usermod -aG sudo ${USER_NAME} \
@@ -26,7 +28,6 @@ RUN echo "root:root" | chpasswd \
 USER ${USER_NAME}
 
 # Setup node container
-WORKDIR ${wkdir}
 COPY ./app/ /home/${USER_NAME}/app/
 RUN yarn install
 

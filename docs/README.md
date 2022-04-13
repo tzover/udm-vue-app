@@ -27,5 +27,5 @@ vue create app
 
 ```
 cd app
-yarn serve -- --port 3000
+yarn serve
 ```

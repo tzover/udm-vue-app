@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList />
+    <div v-if="error">{{ error }}</div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>
+      Loading...
+      <Spinner />
+    </div>
 
     <hr />
     <RefSampleOne />
@@ -10,16 +17,21 @@
     <ReactiveSample />
     <hr />
     <WatchSample />
+    <hr />
+    <PropsSample />
   </div>
 </template>
 
 <script>
-import { computed, ref, watch, watchEffect } from 'vue'
+import getPosts from '../composables/getPosts'
 import PostList from '../components/PostList.vue'
+import Spinner from '../components/Spinner.vue'
+
 import RefSampleOne from './RefSampleOne.vue'
 import RefSampleTwo from './RefSampleTwo.vue'
 import ReactiveSample from './ReactiveSample.vue'
 import WatchSample from './WatchSample.vue'
+import PropsSample from './PropsSample.vue'
 
 export default {
   name: 'Home',
@@ -28,10 +40,18 @@ export default {
     RefSampleTwo,
     ReactiveSample,
     WatchSample,
+    PropsSample,
     PostList,
+    Spinner,
   },
   setup() {
     console.log('setup')
+
+    const { posts, error, load } = getPosts()
+
+    load()
+
+    return { posts, error }
   },
   // created() {
   //   console.log('created')

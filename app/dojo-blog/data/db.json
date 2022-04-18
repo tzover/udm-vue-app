@@ -4,13 +4,31 @@
       "title": "welcome to the blog",
       "body": "Lorem ipsum",
       "id": 1,
-      "tags": ["webdev", "coding", "news"]
+      "tags": [
+        "webdev",
+        "coding",
+        "news"
+      ]
     },
     {
       "title": "top 5 CSS tips",
       "body": "Lorem ipsum",
       "id": 2,
-      "tags": ["css", "webdev", "coding"]
+      "tags": [
+        "css",
+        "webdev",
+        "coding"
+      ]
+    },
+    {
+      "title": "test1",
+      "body": "hello-world",
+      "tags": [
+        "css",
+        "vscode",
+        "react"
+      ],
+      "id": 3
     }
   ]
 }

@@ -8,15 +8,19 @@
       <label>Tags (hit enter to add a tag)</label>
       <input type="text" v-model="tag" @keydown.enter.prevent="handleKeydown" />
       <div v-for="tag in tags" :key="tag" class="pill">#{{ tag }}</div>
-      <button type="button">Add Post</button>
+      <button>Add Post</button>
     </form>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
   setup() {
+    const router = useRouter()
+
     const title = ref('')
     const body = ref('')
     const tag = ref('')
@@ -42,6 +46,8 @@ export default {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(post),
       })
+
+      router.push({ name: 'Home' })
     }
     return { title, body, tag, handleKeydown, tags, handleSubmit }
   },

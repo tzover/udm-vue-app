@@ -63,8 +63,9 @@ export default {
 </script>
 
 <style>
-h3 {
-  letter-spacing: 1px;
-  color: aqua;
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
 }
 </style>

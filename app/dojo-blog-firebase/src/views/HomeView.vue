@@ -12,14 +12,20 @@
     </div>
 
     <hr />
-    <RefSampleOne />
-    <RefSampleTwo />
-    <hr />
-    <ReactiveSample />
-    <hr />
-    <WatchSample />
-    <hr />
-    <PropsSample />
+    <button type="button" @click="handleShowEvent">
+      {{ !showSample ? 'Show Sample' : 'Close Sample' }}
+    </button>
+    <div v-show="showSample">
+      <hr />
+      <RefSampleOne />
+      <RefSampleTwo />
+      <hr />
+      <ReactiveSample />
+      <hr />
+      <WatchSample />
+      <hr />
+      <PropsSample />
+    </div>
   </div>
 </template>
 
@@ -29,6 +35,7 @@ import PostList from '../components/PostList.vue'
 import Spinner from '../components/Spinner.vue'
 import TagCloud from '../components/TagCloud.vue'
 
+import { ref } from 'vue'
 import RefSampleOne from './RefSampleOne.vue'
 import RefSampleTwo from './RefSampleTwo.vue'
 import ReactiveSample from './ReactiveSample.vue'
@@ -55,7 +62,13 @@ export default {
 
     load()
 
-    return { posts, error }
+    // practices code
+    const showSample = ref(false)
+    const handleShowEvent = () => {
+      showSample.value = !showSample.value
+    }
+
+    return { posts, error, showSample, handleShowEvent }
   },
   // created() {
   //   console.log('created')

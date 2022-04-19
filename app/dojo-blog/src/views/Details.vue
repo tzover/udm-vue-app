@@ -16,7 +16,7 @@ export default {
   props: ['id'],
   components: { Spinner },
   setup(props) {
-    const useRoute = useRoute()
+    const route = useRoute()
 
     // const { post, error, load } = getPost(props.id)
     const { post, error, load } = getPost(route.params.id)

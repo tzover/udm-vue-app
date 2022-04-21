@@ -25,11 +25,16 @@
 
 <script>
 import { ref } from 'vue'
+import { timestamp } from '@/firebase/config'
 import useStorage from '@/composables/useStorage'
+import useCollection from '@/composables/useCollection'
+import getUser from '@/composables/getUser'
 
 export default {
   setup() {
     const { filePath, url, uploadImage } = useStorage()
+    const { error, addDoc } = useCollection('playlists')
+    const { user } = getUser()
 
     const title = ref('')
     const description = ref('')
@@ -39,7 +44,19 @@ export default {
     const handleSubmit = async () => {
       if (file.value) {
         await uploadImage(file.value)
-        console.log('image uploaded, url: ', url.value)
+        await addDoc({
+          title: title.value,
+          description: description.value,
+          userId: user.value.uid,
+          userName: user.value.displayName,
+          coverUrl: url.value,
+          filePath: filePath.value,
+          songs: [],
+          createdAt: timestamp(),
+        })
+        if (!error.value) {
+          console.log('playlist added')
+        }
       }
     }
 

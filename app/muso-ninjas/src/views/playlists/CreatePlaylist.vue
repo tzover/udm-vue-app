@@ -15,7 +15,7 @@
       ></textarea>
       <!-- upload playlist image -->
       <label>Upload Playlist Cover Image</label>
-      <input type="file" />
+      <input type="file" @change="handleChange" />
       <div class="error"></div>
 
       <button>Create</button>
@@ -25,17 +25,40 @@
 
 <script>
 import { ref } from 'vue'
+import useStorage from '@/composables/useStorage'
 
 export default {
   setup() {
+    const { filePath, url, uploadImage } = useStorage()
+
     const title = ref('')
     const description = ref('')
+    const file = ref(null)
+    const fileError = ref(null)
 
-    const handleSubmit = () => {
-      console.log(title.value, description.value)
+    const handleSubmit = async () => {
+      if (file.value) {
+        await uploadImage(file.value)
+        console.log('image uploaded, url: ', url.value)
+      }
     }
 
-    return { title, description, handleSubmit }
+    // allowed file types
+    const types = ['image/png', 'image/jpeg']
+
+    const handleChange = (e) => {
+      const selected = e.target.files[0]
+
+      if (selected && types.includes(selected.type)) {
+        file.value = selected
+        fileError.value = null
+      } else {
+        file.value = null
+        fileError = 'Please select an image file (png or jpg)'
+      }
+    }
+
+    return { title, description, handleSubmit, handleChange }
   },
 }
 </script>

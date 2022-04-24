@@ -14,35 +14,60 @@
 
     <!-- song list -->
     <div class="song-list">
-      <p></p>
+      <div v-if="!playlist.songs.length">
+        No songs have been added to this playlist yet
+      </div>
+      <div v-for="song in playlist.songs" :key="song.id" class="single-song">
+        <div class="details">
+          <h3>{{ song.title }}</h3>
+          <p>{{ song.artist }}</p>
+        </div>
+        <button v-if="ownership" @click="handleClick(song.id)">delete</button>
+      </div>
+      <AddSong v-if="ownership" :playlist="playlist" />
     </div>
   </div>
 </template>
 
 <script>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import AddSong from '@/components/AddSong.vue'
 import getDocument from '@/composables/getDocument'
 import getUser from '@/composables/getUser'
 import useDocument from '@/composables/useDocument'
+import useStorage from '@/composables/useStorage'
 
 export default {
   props: ['id'],
-  setup() {
+  components: { AddSong },
+  setup(props) {
     const { error, document: playlist } = getDocument('playlists', props.id)
     const { user } = getUser()
-    const { deleteDoc } = useDocument('playlists', props.id)
+    const { deleteDoc, updateDoc } = useDocument('playlists', props.id)
+    const { deleteImage } = useStorage()
+
+    const router = useRouter()
 
     const ownership = computed(() => {
       return (
-        playlist.value && user.value && user.value.uid === playlist.value.userid
+        playlist.value && user.value && user.value.uid == playlist.value.userId
       )
     })
 
     const handleDelete = async () => {
+      await deleteImage(playlist.value.filePath)
       await deleteDoc()
+      router.push({ name: 'Home' })
     }
 
-    return { error, playlist, ownership, handleDelete }
+    const handleClick = async (id) => {
+      const songs = playlist.value.songs.filter((song) => song.id != id)
+
+      await updateDoc({ songs })
+    }
+
+    return { error, playlist, ownership, handleDelete, handleClick }
   },
 }
 </script>
@@ -85,5 +110,13 @@ export default {
 }
 .description {
   text-align: left;
+}
+.single-song {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--secondary);
+  margin-bottom: 20px;
 }
 </style>

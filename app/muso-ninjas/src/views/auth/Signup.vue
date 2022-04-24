@@ -19,9 +19,12 @@
 // using @ means start at the project src root
 import useSignup from '@/composables/useSignup'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   setup() {
+    const router = useRouter()
+
     const { error, signup, isPending } = useSignup()
 
     const email = ref('')
@@ -32,6 +35,7 @@ export default {
       const res = await signup(email.value, password.value, displayName.value)
       if (!error.value) {
         console.log('user signed up')
+        router.push({ name: 'UserPlaylists' })
       }
     }
 

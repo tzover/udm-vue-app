@@ -1,19 +1,5 @@
-# app
+# Build Apps with Vue 3 & Firebase
+All course files for the Vue 3 &amp; Firebase Udemy course.
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## How to use these files
+Each lesson has it's own branch in this repo. To see the code for a particular lesson, select that lesson from the branch drop-dow in the top-left of the screen. Then you can download the files by clicking on the green 'Code' button & selecting 'Download Zip'.

@@ -21,6 +21,7 @@
 <script>
 import CreateBookForm from '@/components/CreateBookForm'
 import getCollection from '../composables/getCollection'
+import getUser from '../composables/getUser'
 
 // firebase imports
 import { db } from '../firebase/config'
@@ -30,7 +31,12 @@ export default {
   name: 'Home',
   components: { CreateBookForm },
   setup() {
-    const { documents: books } = getCollection('books')
+    const { user } = getUser()
+    const { documents: books } = getCollection('books', [
+      'userUid',
+      '==',
+      user.value.uid,
+    ])
 
     const handleDelete = (book) => {
       console.log(book)
